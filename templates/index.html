@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+HeatPlus
+{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-primary alert-dismissible fade show mb-0" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides" style="height:500px">
+    <ul class="slides-container">
+        <li class="text-left">
+            <img src="{% static 'images/yg2.jpg' %}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> HeatPlus</strong></h1>
+                        <p class="m-b-40">Radiating Comfort, Redefining Spaces with Innovative Infrared Flooring.</p>
+                        <p><a class="btn hvr-hover" href="/products">Buy now</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+            <img src="{% static 'images/y1g.jpg' %}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Why would u choose <br> Heatplus?</strong></h1>
+                        <p class="m-b-40">Far infrared heating is 100% safe and this has been backed up by numerous studies.
+                            Including those done by the Swedish National Institute of Radiation Protection.
+                            Although our infrared heaters generate the same sort of heat as the sun, no harmful UV rays are projected from our panels.</p>
+                        <p><a class="btn hvr-hover" href="/products">Buy now</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+            <img src="{% static 'images/y2g.jpg' %}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Is Infrared film<br>Healthy?</strong></h1>
+                        <p class="m-b-40">It may seem a bit odd that your home or work heating system can provide health benefits (apart from staying warm!) but infrared heat has long been used in many healing practices.
+
+Far infrared heat is the same sort of heat that you will feel when you are outside on a warm summer’s day. And why you don’t necessarily feel cold on a bright sunny day in winter.</p>
+                        <p><a class="btn hvr-hover" href="/products">Buy now</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+
+<div class="mt-2">
+    <div class="shadow p-2 rounded" style="background-color:#e9ecef; color:black">
+        <div class="container">
+            <div class="row text-center font-weight-bold">
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <p><a href="/">All Products</a></p>
+                </div>
+                {% for category in categories %}
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <p><a href="/products/?category={{category.id}}">{{category.category_name}}</a></p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Products  -->
+<div class="products-box" style="padding:30px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Featured Products</h1>
+                    <p>
+Introducing our revolutionary Infrared Floor, Radiant floor, thermo mats – where warmth meets innovation. Experience the future of heating with our cutting-edge technology that brings comfort and efficiency to your space. Say goodbye to cold floors and hello to a new level of cozy. Explore our featured item and transform the way you feel about heating.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in products %}
+            {% if product.tag == 'Featured' %}
+            <div class="col-lg-3 col-md-6 special-grid">
+                <div class="products-single fix shadow-sm p-2 bg-white rounded border border-4">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <img src="{{product.product_img.url}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="why-text text-center font-weight-bold" style="height:155px;">
+                        <h4><a href="/productdetail/{{product.id}}">{{product.product_name}}</a></h4>
+                        <h5>₴ {{product.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{product.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{product.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="products-box" style="padding:20px 0px;" id="film">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Continuous infrared film</h1>
+                    <p>Used as a heating element in underfloor heating systems</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for film in film %}
+            <div class="col-lg-3 col-md-6 special-grid" >
+                <div class="products-single fix shadow-sm p-2 bg-white rounded">
+                    <a href="/productdetail/{{film.id}}">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <div class="type-lb">
+
+                        </div>
+                        <img src="{{film.product_img.url}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon"></div>
+                    </div></a>
+                    <div class="why-text text-center" style="height:155px;">
+                        <h4><a href="/productdetail/{{film.id}}">{{film.product_name}}</a></h4>
+                        <h5>₴ {{film.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{film.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{film.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ctr">
+                <a href="/products?category=1" class="btn hvr-hover" style="color:white">Show All</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products-box" style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Radiant floors</h1>
+                    <p>Radiant heating systems supply heat directly to the floor or to panels in the wall or ceiling of a house</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for floor in floor %}
+            <div class="col-lg-3 col-md-6 special-grid">
+                <div class="products-single fix shadow-sm p-2 bg-white rounded">
+                    <a href="/productdetail/{{floor.id}}">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <div class="type-lb">
+                            <! — тут может быть p со скидкой sale—>
+                        </div>
+                        <img src="{{floor.product_img.url}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon"></div>
+                    </div></a>
+                    <div class="why-text text-center" style="height:155px;">
+                        <h4><a href="/productdetail/{{floor.id}}">{{floor.product_name}}</a></h4>
+                        <h5>₴ {{floor.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{floor.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{floor.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ctr">
+                <a href="/products/?category=2" class="btn hvr-hover" style="color:white">Show All</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products-box" style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Heated mats</h1>
+                    <p>Introducing our revolutionary heated mats – the perfect blend of comfort and functionality. Designed to elevate your living spaces, our heated mats offer a cozy haven during chilly seasons.  </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for mat in mat %}
+            <div class="col-lg-3 col-md-6 special-grid">
+                <div class="products-single fix shadow-sm p-2 bg-white rounded">
+                    <a href="/productdetail/{{mat.id}}">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <div class="type-lb">
+                            <p class="sale  ">Good choice for a near-bed carpet</p>
+                        </div>
+                        <img src="{{mat.product_img.url}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon"></div>
+                    </div></a>
+                    <div class="why-text text-center" style="height:155px;">
+                        <h4><a href="/productdetail/{{mat.id}}">{{mat.product_name}}</a></h4>
+                        <h5>₴ {{mat.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{mat.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{mat.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ctr">
+                <a href="/products/?category=3" class="btn hvr-hover" style="color:white">Show All</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products-box" style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Thermostats</h1>
+                    <p>A thermostat is a device that controls your home's temperature, providing comfort and energy efficiency. It regulates heating and cooling systems to maintain your preferred climate.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for thermostat in thermostat %}
+            <div class="col-lg-3 col-md-6 special-grid">
+                <div class="products-single fix shadow-sm p-2 bg-white rounded">
+                    <a href="/productdetail/{{thermostat.id}}">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <div class="type-lb">
+
+                        </div>
+                        <img src="{{thermostat.product_img.url}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon"></div>
+                    </div></a>
+                    <div class="why-text text-center" style="height:155px;">
+                        <h4><a href="/productdetail/{{thermostat.id}}">{{thermostat.product_name}}</a></h4>
+                        <h5>₴ {{thermostat.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{thermostat.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{thermostat.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ctr">
+                <a href="/products?category=6" class="btn hvr-hover" style="color:white">Show All</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products-box" style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                        <h1>Related products</h1>
+                    <p>Experience innovation with our range of products. Capture captivating moments with infrared film, enjoy comfort with smart thermostats, and explore more. Elevate your lifestyle with us.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for featured in featured %}
+            <div class="col-lg-3 col-md-6 special-grid">
+                <div class="products-single fix shadow-sm p-2 bg-white rounded">
+                    <a href="/productdetail/{{featured.id}}">
+                    <div class="box-img-hover ctr" style="height:255px;">
+                        <div class="type-lb">
+
+                        </div>
+                        <img src="{{featured.product_img.url}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon"></div>
+                    </div></a>
+                    <div class="why-text text-center" style="height:155px;">
+                        <h4><a href="/productdetail/{{featured.id}}">{{featured.product_name}}</a></h4>
+                        <h5>₴ {{featured.price|intcomma}}</h5>
+                        <div class="mt-2">
+                            <a href="/buynow/{{featured.id}}" class="btn hvr-hover cart" style="color:white">Buy Now</a>
+                            <a href="/addtocart/{{featured.id}}" class="btn hvr-hover cart" style="color:white">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ctr">
+                <a href="/products?category=7" class="btn hvr-hover" style="color:white">Show All</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Products  -->
+
+{% endblock %}

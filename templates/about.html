@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+About | HeatPlus
+{% endblock %}
+
+{% block body %}
+
+<div class="shadow p-2 rounded" style="background-color:#e9ecef; color:black">
+    <div class="row text-center font-weight-bold">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <p><a href="/products">All Products</a></p>
+        </div>
+        {% for category in categories %}
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <p><a href="/products/?category={{category.id}}">{{category.category_name}}</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="about-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="noo-sh-title">We are <span>HeatPlus</span></h2>
+                <p>Introducing HeatPlus Innovations – Your Gateway to Elevated Comfort!
+
+At HeatPlus Innovations, we are your dedicated partners in creating spaces of unparalleled warmth and comfort. Step into a world where cutting-edge heating solutions redefine coziness and luxury.
+
+Explore our exquisite selection of Infrared Floor Systems, designed to envelop your surroundings in soothing warmth. With innovative technology, our radiant floor systems transform cold floors into welcoming havens, eliminating chilly discomfort.
+
+Experience the epitome of comfort with our Heated Mats, meticulously crafted to provide targeted warmth and customizable coziness. Whether you're unwinding in your personal retreat or enhancing workplace productivity, our heated mats redefine relaxation.
+
+But that's not all – our commitment to your comfort goes beyond our exceptional products. Discover the power of control with our Smart Thermostats. Tailor your heating experience with precision, achieving the perfect balance of warmth and energy efficiency.
+
+At HeatPlus Innovations, we take pride in our relentless pursuit of quality and innovation. Our products stand as a testament to durability, reliability, and the ultimate in heating sophistication. Join a community of satisfied customers who have transformed their spaces into realms of relaxation.
+
+Elevate your comfort. Experience HeatPlus Innovations today. Your journey to a cozier, more luxurious world starts here.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="banner-frame"> <img class="img-thumbnail img-fluid" src="{% static 'images/store1.png' %}" alt="" width="540px"/> <img class="img-thumbnail img-fluid" src="{% static 'images/store2.png' %}" alt="" width="500px" height="300px" >
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row my-5">
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>Trusted By Thousands</h3>
+                    <p>At HeatPlus Comfort Solutions, we've earned the trust of thousands of satisfied customers. Our commitment to excellence, premium quality products, and dedicated customer service have made us the go-to choice for those seeking unparalleled comfort and luxury. Join our community of happy customers and experience the warmth of trust with HeatPlus. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>Uncompromising Professionalism</h3>
+                    <p>At HeatPlus Comfort Solutions, professionalism is at the core of everything we do. Our team of experts brings years of experience and industry knowledge to every project, ensuring seamless product integration and unparalleled customer satisfaction. With HeatPlus, you're not just getting exceptional products – you're getting a professional partner dedicated to delivering excellence. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>Masters of Expertise</h3>
+                    <p>With a wealth of industry knowledge, HeatPlus Comfort Solutions stands as a beacon of expertise. Our seasoned professionals bring precision and innovation to every aspect, ensuring top-tier solutions. Trust in our expertise to elevate your comfort and experience the pinnacle of heating sophistication. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
